@@ -1,4 +1,4 @@
-# XYZ
+# XYZ Hafez MADI
 
 <img src="docs/screenshots/home.png" alt="Page d'accueil" />
 
