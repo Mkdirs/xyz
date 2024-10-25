@@ -13,6 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Week::class)->constrained('weeks')->onDelete('cascade');
@@ -23,6 +29,7 @@ return new class extends Migration
             $table->string('player')->nullable();
             $table->string('player_track_id')->nullable();
             $table->string('player_thumbnail_url')->nullable();
+            $table->foreignIdFor(\App\Models\Category::class)->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,5 +40,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tracks');
+        Schema::dropIfExists('categories');
     }
 };
