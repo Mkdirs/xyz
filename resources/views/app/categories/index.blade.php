@@ -12,7 +12,7 @@
                             </div>
                             <div>
                                 <h2>{{ $category->name }}</h2>
-                                <h3>{{ trans_choice('tracks.count', $category->tracks_count) }}</h3>
+                                <h3>{{ $category->tracks_count() }}</h3>
                             </div>
                         </div>
                     </a>
