@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('app.categories.index', ['categories' => Category::all()]);
+        $categories = Category::withCount('tracks')->get();
+        return view('app.categories.index', ['categories' => $categories]);
     }
 
 
@@ -23,7 +24,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $tracks = $category->tracks;
+        $tracks = $category->tracks()->paginate();
         return view('app.categories.show', ["category" => $category, 'tracks' => $tracks]);
     }
 }

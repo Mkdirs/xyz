@@ -12,16 +12,10 @@ class Category extends Model
     use HasFactory;
 
     protected $hidden = [
-        'password',
-        'remember_token',
     ];
 
     public function tracks() : HasMany{
         return $this->hasMany(Track::class);
     }
 
-    public function tracks_count(): int
-    {
-        return $this->tracks()->count();
-    }
 }
