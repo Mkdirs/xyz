@@ -24,11 +24,7 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->count(1)
             ->has(Code::factory(config('app.codes_count')))
-            ->sequence(function (Sequence $sequence) {
-                $id = str_pad($sequence->index + 1, 4, "0", STR_PAD_LEFT);
-
-                return ['email' => "admin@xyz.com", 'password' => 'admin'];
-            })
+            ->admin()
             ->create();
 
 
